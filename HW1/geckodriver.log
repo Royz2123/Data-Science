@@ -416,3 +416,120 @@ pc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
 [G
 ###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
 
+1542028151071	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Royz\\AppData\\Local\\Temp\\rust_mozprofile.NI1tEN9J2Gjn"
+[Parent 12744, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 14500, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 14500, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1542028203352	Marionette	INFO	Listening on port 53146
+1542028208335	Marionette	WARN	TLS certificate errors will be ignored for this session
+1542028208987	Marionette	DEBUG	[6442450945] Frame script loaded
+1542028209746	Marionette	DEBUG	[6442450945] Frame script registered
+1542028212920	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for about:blank
+1542028215404	Marionette	DEBUG	[6442450945] Received DOM event pagehide for about:blank
+1542028223051	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=1
+1542028231462	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450956
+1542028233529	Marionette	DEBUG	[6442450945] Received DOM event pageshow for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=1
+1542028234343	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=1
+1542028235364	Marionette	DEBUG	[6442450945] Received DOM event pagehide for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=1
+1542028235366	Marionette	DEBUG	[6442450945] Received DOM event unload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=1
+1542028236690	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=2
+1542028236855	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450951
+1542028236855	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450949
+1542028236855	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450954
+1542028237428	Marionette	DEBUG	[6442450945] Received DOM event pageshow for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=2
+1542028237857	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=2
+1542028238988	Marionette	DEBUG	[6442450945] Received DOM event pagehide for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=2
+1542028238992	Marionette	DEBUG	[6442450945] Received DOM event unload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=2
+1542028240010	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=3
+1542028240190	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450965
+1542028240190	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450963
+1542028240190	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450968
+1542028240754	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450981
+1542028241134	Marionette	DEBUG	[6442450945] Received DOM event pageshow for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=3
+1542028241520	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=3
+1542028242611	Marionette	DEBUG	[6442450945] Received DOM event pagehide for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=3
+1542028242612	Marionette	DEBUG	[6442450945] Received DOM event unload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=3
+1542028244707	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=4
+1542028244909	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450984
+1542028244909	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450987
+1542028244910	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450977
+1542028244911	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450979
+1542028245485	Marionette	DEBUG	[6442450945] Received DOM event pageshow for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=4
+1542028246126	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=4
+1542028247511	Marionette	DEBUG	[6442450945] Received DOM event pagehide for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=4
+1542028247512	Marionette	DEBUG	[6442450945] Received DOM event unload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=4
+1542028247837	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450992
+1542028247837	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450990
+1542028247837	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442450995
+1542028248380	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=5
+1542028249417	Marionette	DEBUG	[6442450945] Received DOM event pageshow for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=5
+1542028249910	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=5
+1542028250961	Marionette	DEBUG	[6442450945] Received DOM event pagehide for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=5
+1542028250962	Marionette	DEBUG	[6442450945] Received DOM event unload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=5
+1542028251331	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451005
+1542028251332	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451004
+1542028251332	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451010
+1542028251876	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=6
+1542028252767	Marionette	DEBUG	[6442450945] Received DOM event pageshow for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=6
+1542028253318	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=6
+1542028254471	Marionette	DEBUG	[6442450945] Received DOM event pagehide for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=6
+1542028254472	Marionette	DEBUG	[6442450945] Received DOM event unload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=6
+1542028255444	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=7
+1542028255604	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451021
+1542028255605	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451019
+1542028255605	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451024
+1542028256321	Marionette	DEBUG	[6442450945] Received DOM event pageshow for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=7
+1542028256721	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=7
+1542028257700	Marionette	DEBUG	[6442450945] Received DOM event pagehide for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=7
+1542028257701	Marionette	DEBUG	[6442450945] Received DOM event unload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=7
+1542028258032	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451034
+1542028258032	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451033
+1542028258033	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451039
+1542028258574	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=8
+1542028259613	Marionette	DEBUG	[6442450945] Received DOM event pageshow for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=8
+1542028260036	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=8
+1542028261036	Marionette	DEBUG	[6442450945] Received DOM event pagehide for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=8
+1542028261037	Marionette	DEBUG	[6442450945] Received DOM event unload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=8
+1542028261366	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451049
+1542028261367	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451048
+1542028261367	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451054
+1542028261911	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=9
+1542028263077	Marionette	DEBUG	[6442450945] Received DOM event pageshow for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=9
+1542028263475	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=9
+1542028264511	Marionette	DEBUG	[6442450945] Received DOM event pagehide for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=9
+1542028264512	Marionette	DEBUG	[6442450945] Received DOM event unload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=9
+1542028264777	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451064
+1542028264778	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451063
+1542028264778	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451069
+1542028265608	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=10
+1542028266506	Marionette	DEBUG	[6442450945] Received DOM event pageshow for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=10
+1542028266863	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=10
+1542028267926	Marionette	DEBUG	[6442450945] Received DOM event pagehide for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=10
+1542028267926	Marionette	DEBUG	[6442450945] Received DOM event unload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=10
+1542028268174	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451079
+1542028268174	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451078
+1542028268175	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451084
+1542028269248	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=11
+1542028270139	Marionette	DEBUG	[6442450945] Received DOM event pageshow for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=11
+1542028270640	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=11
+1542028271687	Marionette	DEBUG	[6442450945] Received DOM event pagehide for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=11
+1542028271688	Marionette	DEBUG	[6442450945] Received DOM event unload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=11
+1542028271955	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451094
+1542028271956	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451093
+1542028271956	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451099
+1542028272786	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=12
+1542028273565	Marionette	DEBUG	[6442450945] Received DOM event pageshow for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=12
+1542028274074	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=12
+1542028275037	Marionette	DEBUG	[6442450945] Received DOM event pagehide for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=12
+1542028275039	Marionette	DEBUG	[6442450945] Received DOM event unload for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=12
+1542028275894	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=13
+1542028276039	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451110
+1542028276039	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451108
+1542028276040	Marionette	DEBUG	[6442450945] Received observer notification outer-window-destroyed for 6442451113
+1542028277068	Marionette	DEBUG	[6442450945] Received DOM event pageshow for https://www.kickstarter.com/discover/advanced?category_id=16&woe_id=0&sort=magic&seed=2569455&page=13
+1542028277625	Marionette	INFO	Stopped listening on port 53146
+[Child 9744, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 97[Parent 12744, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[GPU 9
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
