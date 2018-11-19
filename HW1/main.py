@@ -1,4 +1,3 @@
-import re
 import sys
 import time
 
@@ -13,8 +12,7 @@ MERCY_TIME = 1
 
 def main():
     # Step 1: get links for projects
-    projects = []
-    if len(sys.argv) > 1:
+    if len(sys.argv) > 1 and sys.argv[1] == "list":
         driver = webdriver.Firefox()
         projects = list_projects.get_project_links(driver)
         util.write_list(projects)
