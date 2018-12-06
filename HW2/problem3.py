@@ -113,6 +113,40 @@ def question_d():
     # save the points
     util.write_list(data1, "problem3_outputs/question_d/data1.txt")
     util.write_list(data2, "problem3_outputs/question_d/data2.txt")
+    
+    
+def sample(radius_limits, theta_limits, points, polar=True):
+    r_data = np.random.uniform(radius_limits[0], radius_limits[1], (points, 1))
+    t_data = np.random.uniform(theta_limits[0], theta_limits[1], (points, 1))
+    data = np.concatenate((r_data, t_data), axis=1)
+    if polar:
+        data = np.array([util.pol2cart(point[0], point[1]) for point in data])
+    return data
+     
+    
+def move_points(points, offset):
+    for point in points:
+        point += offset
+    return points
+    
+def question_e():
+    # first find Y for YOAV
+    top_half = sample((0.5, 0.6), (np.pi, 2 * np.pi), 50)
+    top_half = move_points(top_half, (5, 2))
+    bottom_half = sample((0.5, 0.6), (np.pi, 2 * np.pi), 50)
+    bottom_half = move_points(bottom_half, (5, 0))
+    stick = sample((5.5, 5.6), (2,0), 50, False)
+    letter_y = np.concatenate((top_half, bottom_half, stick), axis=0)
+    
+    
+    util.plot_in_R2(letter_y.T[0], letter_y.T[1], "Our names")
+
+    
+    
+
+
+
+
         
         
-question_d()
+question_e()
