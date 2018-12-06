@@ -130,16 +130,34 @@ def move_points(points, offset):
     return points
     
 def question_e():
+    for i in range(2):
+        points = plot_e_once()
+        util.write_list(points, "problem3_outputs/question_e/data" + str(i + 1) + ".txt") 
+        
+def plot_e_once():
     # first find Y for YOAV
-    top_half = sample((0.5, 0.6), (np.pi, 2 * np.pi), 50)
-    top_half = move_points(top_half, (5, 2))
-    bottom_half = sample((0.5, 0.6), (np.pi, 2 * np.pi), 50)
-    bottom_half = move_points(bottom_half, (5, 0))
-    stick = sample((5.5, 5.6), (2,0), 50, False)
-    letter_y = np.concatenate((top_half, bottom_half, stick), axis=0)
+    top_half = sample((0.6, 0.7), (np.pi, 2 * np.pi), 50)
+    top_half = move_points(top_half, (3, 2.1))
+    bottom_half = sample((0.6, 0.7), (np.pi, 2 * np.pi), 50)
+    bottom_half = move_points(bottom_half, (3, 0.6))
+    stick = sample((3.5, 3.6), (2, 0.5), 40, False)
     
+    side_half = sample((0.5, 0.6), (-0.5 * np.pi, 0.5 * np.pi), 40)
+    side_half = move_points(side_half, (1, 1.5))
+    r_stick1 = sample((0, 1), (2, 2.1), 20, False)
+    r_stick2 = sample((0, 1), (1, 1.1), 20, False)
+    r_stick3 = sample((0, 0.1), (2,0), 40, False)
+    r_bottom_quart = sample((2, 2.1), (0, 0.175 * np.pi), 40)
+    r_bottom_quart = move_points(r_bottom_quart, (-0.75, 0))
     
-    util.plot_in_R2(letter_y.T[0], letter_y.T[1], "Our names")
+    initials = np.concatenate((
+        top_half, bottom_half, stick, side_half, 
+        r_stick1, r_stick2, r_stick3, r_bottom_quart
+    ), axis=0)
+
+    util.plot_in_R2(initials.T[0], initials.T[1], "Our names")
+    
+    return initials
 
     
     
@@ -149,4 +167,4 @@ def question_e():
 
         
         
-question_e()
+question_d()
