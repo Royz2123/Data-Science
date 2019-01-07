@@ -1,7 +1,11 @@
+
 import nltk
 from nltk.corpus import stopwords
 from nltk import PorterStemmer
+from nltk import pos_tag
 import matplotlib.pyplot as plt
+
+nltk.download('averaged_perceptron_tagger')
 
 STOPWORDS = stopwords.words("english")
 
@@ -59,4 +63,36 @@ def question4():
     pretty_print([val[0] for val in top])
     plot_log_log(list(range(1, len(occ) + 1)), [val[1] for val in occ])
 
-question4()
+
+def question5():
+    txt = read_file("sherlock_holmes.txt")
+    txt = nltk.word_tokenize(txt)
+    tagged = pos_tag(txt)
+    nouns = []
+    i = 0
+    while i < len(tagged):
+        noun = ""
+        while  i < len(tagged) and tagged[i][1] in ["JJ", "JJR", "JJS"]:
+            word, type = tagged[i]
+            noun += " " + word
+            i = i+1
+        if i >= len(tagged) or tagged[i][1] not in ["NN", "NNP", "NNS", "NNPS"]:
+            i += 1
+            continue
+        while i < len(tagged) and tagged[i][1] in ["NN", "NNP", "NNS", "NNPS"]:
+            word, type = tagged[i]
+            noun += " " + word
+            i = i+1
+        nouns.append(noun[1:])
+    occ = [(noun, nouns.count(noun)) for noun in list(set(nouns))]
+    occ = sorted(occ, key=lambda x: x[1], reverse=True)
+    top = occ[:20]
+    pretty_print([val[0] for val in top])
+    plot_log_log(list(range(1, len(occ) + 1)), [val[1] for val in occ])
+
+
+# question5()
+question3()
+
+
+

@@ -1,0 +1,440 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{culmus}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language american
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.54cm
+\topmargin 2.54cm
+\rightmargin 2.54cm
+\bottommargin 2.54cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+HW3 Assignment
+\end_layout
+
+\begin_layout Title
+A Needle in a Data Haystack — Introduction to Data Science
+\end_layout
+
+\begin_layout Author
+Roy Zohar (209896174) and Yoav Tamir (322291519)
+\end_layout
+
+\begin_layout Subsection*
+Question 3
+\end_layout
+
+\begin_layout Problem
+The book we chose to process is The Adventures of Sherlock Holmes
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+We found the following graph for the log frequency:
+\end_layout
+
+\begin_layout Problem
+\begin_inset Graphics
+	filename question2.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+The top 20 most frequent words for this part are as follows:
+\end_layout
+
+\begin_layout Enumerate
+the
+\end_layout
+
+\begin_layout Enumerate
+I
+\end_layout
+
+\begin_layout Enumerate
+and
+\end_layout
+
+\begin_layout Enumerate
+of
+\end_layout
+
+\begin_layout Enumerate
+to
+\end_layout
+
+\begin_layout Enumerate
+a
+\end_layout
+
+\begin_layout Enumerate
+in
+\end_layout
+
+\begin_layout Enumerate
+that
+\end_layout
+
+\begin_layout Enumerate
+was
+\end_layout
+
+\begin_layout Enumerate
+it
+\end_layout
+
+\begin_layout Enumerate
+you
+\end_layout
+
+\begin_layout Enumerate
+he
+\end_layout
+
+\begin_layout Enumerate
+is
+\end_layout
+
+\begin_layout Enumerate
+his
+\end_layout
+
+\begin_layout Enumerate
+have
+\end_layout
+
+\begin_layout Enumerate
+my
+\end_layout
+
+\begin_layout Enumerate
+with
+\end_layout
+
+\begin_layout Enumerate
+had
+\end_layout
+
+\begin_layout Enumerate
+as
+\end_layout
+
+\begin_layout Enumerate
+which
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+In this part, we removed the stopwords from the text.
+ We got the following graph for the log frequency:
+\end_layout
+
+\begin_layout Problem
+\begin_inset Graphics
+	filename question3.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+The top 20 most frequent words for this part are as follows:
+\end_layout
+
+\begin_layout Enumerate
+said
+\end_layout
+
+\begin_layout Enumerate
+upon
+\end_layout
+
+\begin_layout Enumerate
+Holmes
+\end_layout
+
+\begin_layout Enumerate
+one
+\end_layout
+
+\begin_layout Enumerate
+would
+\end_layout
+
+\begin_layout Enumerate
+man
+\end_layout
+
+\begin_layout Enumerate
+could
+\end_layout
+
+\begin_layout Enumerate
+little
+\end_layout
+
+\begin_layout Enumerate
+see
+\end_layout
+
+\begin_layout Enumerate
+may
+\end_layout
+
+\begin_layout Enumerate
+us
+\end_layout
+
+\begin_layout Enumerate
+think
+\end_layout
+
+\begin_layout Enumerate
+know
+\end_layout
+
+\begin_layout Enumerate
+shall
+\end_layout
+
+\begin_layout Enumerate
+must
+\end_layout
+
+\begin_layout Enumerate
+time
+\end_layout
+
+\begin_layout Enumerate
+come
+\end_layout
+
+\begin_layout Enumerate
+came
+\end_layout
+
+\begin_layout Enumerate
+door
+\end_layout
+
+\begin_layout Enumerate
+back
+\end_layout
+
+\begin_layout Problem
+In this part, we removed the stopwords from the text and stemmed the text.
+ We got the following graph for the log frequency:
+\end_layout
+
+\begin_layout Problem
+\begin_inset Graphics
+	filename question4.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+The top 20 most frequent words for this part are as follows:
+\end_layout
+
+\begin_layout Enumerate
+said
+\end_layout
+
+\begin_layout Enumerate
+upon
+\end_layout
+
+\begin_layout Enumerate
+holm
+\end_layout
+
+\begin_layout Enumerate
+one
+\end_layout
+
+\begin_layout Enumerate
+would
+\end_layout
+
+\begin_layout Enumerate
+man
+\end_layout
+
+\begin_layout Enumerate
+could
+\end_layout
+
+\begin_layout Enumerate
+littl
+\end_layout
+
+\begin_layout Enumerate
+see
+\end_layout
+
+\begin_layout Enumerate
+may
+\end_layout
+
+\begin_layout Enumerate
+come
+\end_layout
+
+\begin_layout Enumerate
+hand
+\end_layout
+
+\begin_layout Enumerate
+know
+\end_layout
+
+\begin_layout Enumerate
+think
+\end_layout
+
+\begin_layout Enumerate
+us
+\end_layout
+
+\begin_layout Enumerate
+look
+\end_layout
+
+\begin_layout Enumerate
+well
+\end_layout
+
+\begin_layout Enumerate
+must
+\end_layout
+
+\begin_layout Enumerate
+shall
+\end_layout
+
+\begin_layout Enumerate
+time
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+For this question, we
+\end_layout
+
+\begin_layout Enumerate
+man 2 time 3 door 4 room 5 face 6 matter 7 way 8 hand 9 house 10 case 11
+ morning 12 nothing 13 day 14 night 15 work 16 friend 17 father 18 side
+ 19 business 20 lady
+\end_layout
+
+\end_body
+\end_document

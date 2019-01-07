@@ -1,0 +1,17 @@
+HW3 Assignment
+
+A Needle in a Data Haystack - Introduction to Data Science
+
+Roy Zohar 209896174
+
+Yoav Tamir ....
+
+  Question 3.1
+
+  The book we chose to process is “The Adventures of Sherlock 
+  Holmes”
+
+  Question 3.2
+
+  We found the following graph for the log frequency:
+
