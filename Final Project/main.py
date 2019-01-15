@@ -1,52 +1,70 @@
-import sys
-import time
-
-from selenium import webdriver
-
-import get_data
-import list_projects
-import util
-
-MERCY_TIME = 1
+import fetcher
+import parser
+from rank_vector import Vector
+from sql_edge_matrix import EdgeMatrix
+from constants import *
 
 
+def test():
+    edges = EdgeMatrix(False)
+    print(edges.get_cited(10))
 
-def create_filename(topic, papers):
-    return "data/paper_links_" + topic.replace(" ", "_") + "_" + str(papers) + ".txt"
+
+def create_databases():
+    fetcher.fetch_raw_data()
+    parser.store_raw_data()
+    edges = EdgeMatrix()
+
+    curr_vector = Vector("RANKS", 1, RANK_VEC_1_PATH)
+    prev_vector = Vector("RANKS", 1, RANK_VEC_2_PATH)
+
 
 def main():
-    topic = "machine learning"
-    papers = 200
+    edges = EdgeMatrix(False)
 
-    # Step 1: get links for projects
-    if True:
-        driver = webdriver.Firefox()
-        projects = list_projects.get_project_links(driver, topic, num_of_projects=papers)
-        util.write_list(projects, create_filename(topic, papers))
-        driver.close()
-    else:
-        projects = util.read_list()
+    curr_vector = Vector("RANKS", 1, RANK_VEC_1_PATH)
+    prev_vector = Vector("RANKS", 1, RANK_VEC_2_PATH)
 
-    """
-    # Step 2: get data for every project
-    output = dict()
-    output["records"] = {"record": []}
+    for iteration in range(10):
+        for paper_index in range(prev_vector.length()):
+            curr_vector[paper_index] = sum([prev_vector[index] for index in edges.get_cited(paper_index)])
 
-    for project_index, project_link in enumerate(projects):
-        output["records"]["record"].append(get_data.get_data_from_url(
-            project_link,
-            project_index + 1
-        ))
-        print("Crawled:\t%d/%d" % (project_index + 1, len(projects)))
+        # add teleports
+        # curr_vector[paper_index] +=
 
-        # Have mercy on KickStarter :)
-        time.sleep(MERCY_TIME)
+        # check convergence
 
-    # Write into JSON file
-    util.write_dict(output)
-    """
+        # switch
+        temp_vector = curr_vector
+        curr_vector = prev_vector
+        prev_vector = temp_vector
 
 
-if __name__ == "__main__":
-    main()
+"""
+MAIN PSEUDO CODE
 
+
+def main():
+    rank_vector = RankVector()
+    prev_rank_vector = RankVector()
+    edges = EdgeMatrix()
+
+    curr_vector = rank_vector
+    prev_vector = prev_rank_vector
+
+    for iteration in range(10):
+        for paper_index in range(prev_vector.length()):
+            curr_vector[paper_index] = sum([prev_vector[index] for index in edges.get_cited(paper_index)])
+
+        # add teleports
+        # curr_vector[paper_index] +=
+
+        # check convergence
+
+        # switch
+        temp_vector = curr_vector
+        curr_vector = prev_vector
+        prev_vector = temp_vector
+
+
+"""

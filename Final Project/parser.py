@@ -1,90 +1,44 @@
 # each JSON is small, there's no need in iterative processing
 import json
+import sqlite3
 import time
-import mysql.connector
 import shelve
 import os
-import pymongo
 
-HASH_TO_INDEX_PATH = "databases/hash_to_index"
-ADJACENCY_PATH = "databases/adjacency"
-RAW_DATA_PATH = "raw_data/"
+from rank_vector import Vector
+from constants import *
 
 
 def store_raw_data():
     index = 0
-    hash_to_index = shelve.open(HASH_TO_INDEX_PATH)  # open -- file may get suffix added by low-level
+    indexes = Vector("INDEXES_TEST", 1, ID_TO_INDEX_PATH)
     start_time = time.time()
 
-    for filename in sorted(os.listdir(RAW_DATA_PATH)):
+    for filename in sorted(os.listdir(RAW_DATA_PATH), key=lambda x: int(x)):
         pathname = RAW_DATA_PATH + filename
         print(pathname)
 
         with open(pathname, 'rb') as f:
             for line in f:
                 data = json.loads(line)
-                hash_to_index[data["id"]] = index
-
-                #print(data["title"])
-                #print(hash_to_index[data["id"]])
+                indexes[data["id"]] = index
                 index += 1
 
                 if not index % 1000:
                     print(index, "\tFinished. Elapsed time: %.2f sec" % (time.time() - start_time))
-                    hash_to_index.sync()
-    hash_to_index.close()
+                    indexes.save()
+    indexes.close()
 
 
 
-def store_raw_data2():
-    index = 0
-    hash_to_index = shelve.open(HASH_TO_INDEX_PATH)  # open -- file may get suffix added by low-level
-    start_time = time.time()
 
-    for filename in sorted(os.listdir(RAW_DATA_PATH)):
-        pathname = RAW_DATA_PATH + filename
-        print(pathname)
-
-        with open(pathname, 'rb') as f:
-            for line in f:
-                data = json.loads(line)
-                hash_to_index[data["id"]] = index
-
-                #print(data["title"])
-                #print(hash_to_index[data["id"]])
-                index += 1
-
-                if not index % 1000:
-                    print(index, "\tFinished. Elapsed time: %.2f sec" % (time.time() - start_time))
-                    hash_to_index.sync()
-    hash_to_index.close()
-
-
-def create_adjacency(filename):
-    hash_to_index = shelve.open(HASH_TO_INDEX_PATH)
-
-    with open(filename, 'rb') as raw_obj:
-        with open(ADJACENCY_PATH, 'wb') as adj_obj:
-            for line in raw_obj:
-                data = json.loads(line)
-
-                for cit_hash in data["outCitations"]:
-                    # check if this id is in the database
-                    try:
-                        cit_index = hash_to_index[cit_hash]
-                        adj_obj.write(", " + str(cit_index))
-
-                    except Exception as e:
-                        print(e)
-                adj_obj.write("\n")
-
-    hash_to_index.close()
 
 
 
 store_raw_data()
 
 
+conn = sqlite3.connect(ID_TO_INDEX_PATH)
 
 
 
