@@ -36,6 +36,8 @@ class EdgeMatrix(object):
                             citations.append(indexes[citation])
                         except:
                             pass
+                    #citations = indexes.get_multiple(data["inCitations"])
+
 
                     self._edges_vec[edge_index] = ",".join([str(i) for i in citations])
                     edge_index += 1

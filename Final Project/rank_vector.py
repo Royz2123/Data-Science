@@ -52,6 +52,27 @@ class Vector():
             print(e)
             return None
 
+    def get_multiple(self, keys):
+        print(keys)
+        if len(keys) == 0:
+            return []
+
+        keys = [(key,) for key in keys]
+        print(keys)
+        self._cur.executemany(
+            """
+            SELECT * FROM "{}"
+            WHERE ID = ?;
+            """.format(self._name.replace('"', '""')), keys
+        )
+        try:
+            a = [val[1] for val in self._cur.fetchall()]
+            print(a)
+            return a
+        except Exception as e:
+            print(e)
+            return []
+
     def save(self):
         self._conn.commit()
 
