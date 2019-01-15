@@ -1,0 +1,2 @@
+class EdgeMatrix(object):
+    pass

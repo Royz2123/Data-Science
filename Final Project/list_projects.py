@@ -45,3 +45,4 @@ def get_project_links(driver, topic, num_of_projects=DEFAULT_NUM):
         # Output progress
         print("Progress:\t" + str(len(project_links)) + "/" + str(num_of_projects))
     return project_links[:num_of_projects]
+
