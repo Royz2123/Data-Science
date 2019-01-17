@@ -5,10 +5,19 @@ from sql_edge_matrix import EdgeMatrix
 from constants import *
 
 
+#edges = EdgeMatrix(True)
+
+
 def test():
     edges = EdgeMatrix(False)
-    print(edges.get_cited(10))
 
+    for i in range(1000, 20000):
+        print(edges.get_cited(i))
+
+    edges.close()
+
+
+test()
 
 def create_databases():
     fetcher.fetch_raw_data()

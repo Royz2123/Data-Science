@@ -10,12 +10,18 @@ from constants import *
 
 class EdgeMatrix(object):
     def __init__(self, init=True):
-        self._edges_vec = Vector("edges6", 0, EDGES_VECTOR_PATH)
+        self._edges_vec = Vector("EDGES", 0, EDGES_VECTOR_PATH)
+        print(self._edges_vec[0])
         if init:
             self.init_vectors()
 
     def get_cited(self, index):
+        if self._edges_vec[index] == "" or self._edges_vec[index] is None:
+            return []
         return [int(val) for val in self._edges_vec[index].split(",")]
+
+    def close(self):
+        self._edges_vec.close()
 
     def init_vectors(self):
         edge_index = 0
@@ -43,8 +49,5 @@ class EdgeMatrix(object):
                     edge_index += 1
                     if not edge_index % 1000:
                         print(edge_index, "\tFinished. Elapsed time: %.2f sec" % (time.time() - start_time))
-                        indexes.save()
-        indexes.close()
-
-edges = EdgeMatrix()
-edges.get_cited(10)
+                        self._edges_vec.save()
+        self._edges_vec.save()

@@ -25,19 +25,25 @@ class Vector():
     def __init__(self, name, type, url_path):
         self._name = name
         self._conn = sqlite3.connect(url_path)
-        try:
-            self._conn.execute(VEC_TYPES[type].format(self._name.replace('"', '""')))
-        except:
-            pass
         self._cur = self._conn.cursor()
 
+        # check if table exists, if not create TABLE
+        self._cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
+        tables = self._cur.fetchall()
+        if name not in [val[0] for val in tables]:
+            self._conn.execute(VEC_TYPES[type].format(self._name.replace('"', '""')))
+
+
     def __setitem__(self, index, edges):
-        self._conn.execute(
-            """
-            INSERT INTO "{}" (ID, num) 
-            VALUES (?, ?);
-            """.format(self._name.replace('"', '""')), (index, edges)
-        )
+        try:
+            self._conn.execute(
+                """
+                INSERT INTO "{}" (ID, num) 
+                VALUES (?, ?);
+                """.format(self._name.replace('"', '""')), (index, edges)
+            )
+        except:
+            print("Update Failed")
 
     def __getitem__(self, index):
         self._cur.execute(
@@ -78,3 +84,12 @@ class Vector():
 
     def close(self):
         self._conn.close()
+
+"""
+vec = Vector("yoav_table", 0, EDGES_VECTOR_PATH)
+print(vec[0])
+vec[0] = "yo"
+print(vec[0])
+vec.save()
+
+"""
