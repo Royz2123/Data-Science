@@ -4,14 +4,63 @@ import sqlite3
 import time
 import shelve
 import os
+import numpy as np
 
-from rank_vector import Vector
+import sql_map
 from constants import *
 
 
 def store_raw_data():
     index = 0
-    indexes = Vector("INDEXES_TEST", 1, ID_TO_INDEX_PATH)
+    hash_to_index = sql_map.SqlMap("HASH_TO_INDEX", HASH_TO_INDEX_PATH)
+    index_to_hash = sql_map.SqlMap("INDEX_TO_HASH", INDEX_TO_HASH_PATH)
+    start_time = time.time()
+
+    for filename in sorted(os.listdir(RAW_DATA_PATH), key=lambda x: int(x)):
+        pathname = RAW_DATA_PATH + filename
+        print(pathname)
+
+        with open(pathname, 'rb') as f:
+            for line in f:
+                data = json.loads(line)
+                hash_to_index[data["id"]] = index
+                index_to_hash[index] = data["id"]
+                index += 1
+
+                if not index % 1000:
+                    print(index, "\tFinished. Elapsed time: %.2f sec" % (time.time() - start_time))
+                    hash_to_index.save()
+                    index_to_hash.save()
+    hash_to_index.save()
+    index_to_hash.save()
+    hash_to_index.close()
+    index_to_hash.close()
+
+
+def store_raw_data_out():
+    index = 0
+    out_citations = np.memmap(OUT_CITATIONS_PATH, dtype="int64", mode="r+", shape=(10**8 * 4))
+    start_time = time.time()
+
+    for filename in sorted(os.listdir(RAW_DATA_PATH), key=lambda x: int(x)):
+        pathname = RAW_DATA_PATH + filename
+        print(pathname)
+
+        with open(pathname, 'rb') as f:
+            for line in f:
+                data = json.loads(line)
+                out_citations[index] = len(data["outCitations"])
+                index += 1
+
+                if not index % 1000:
+                    print(index, "\tFinished. Elapsed time: %.2f sec" % (time.time() - start_time))
+                    out_citations.flush()
+    out_citations.flush()
+
+
+def store_raw_data_old():
+    index = 0
+    indexes = sql_map.SqlMap("INDEXES_TEST", ID_TO_INDEX_PATH)
     start_time = time.time()
 
     for filename in sorted(os.listdir(RAW_DATA_PATH), key=lambda x: int(x)):
@@ -30,15 +79,12 @@ def store_raw_data():
     indexes.close()
 
 
+# Create all databases
+def init_databases():
+    store_raw_data()
+    store_raw_data_out()
 
-
-
-
-
-store_raw_data()
-
-
-conn = sqlite3.connect(ID_TO_INDEX_PATH)
+init_databases()
 
 
 
@@ -62,65 +108,3 @@ conn = sqlite3.connect(ID_TO_INDEX_PATH)
 
 
 
-
-def create_hash_map():
-    d = shelve.open(HASH_TO_INDEX_PATH)  # open -- file may get suffix added by low-level
-                               # library
-
-    key = "yo"
-    data = "yoav"
-    d[key] = data              # store data at key (overwrites old data if
-                               # using an existing key)
-    data = d[key]              # retrieve a COPY of data at key (raise KeyError
-                               # if no such key)
-    del d[key]                 # delete data stored at key (raises KeyError
-                               # if no such key)
-
-    flag = key in d            # true if the key exists
-    klist = list(d.keys())     # a list of all existing keys (slow!)
-
-    # as d was opened WITHOUT writeback=True, beware:
-    d['xx'] = [0, 1, 2]        # this works as expected, but...
-    d['xx'].append(3)          # *this doesn't!* -- d['xx'] is STILL [0, 1, 2]!
-
-    # having opened d without writeback=True, you need to code carefully:
-    temp = d['xx']             # extracts the copy
-    temp.append(5)             # mutates the copy
-    d['xx'] = temp             # stores the copy right back, to persist it
-
-    # or, d=shelve.open(filename,writeback=True) would let you just code
-    # d['xx'].append(5) and have it work as expected, BUT it would also
-    # consume more memory and make the d.close() operation slower.
-
-    d.close()                  # close it
-
-
-
-
-
-
-
-create_hash_map()
-
-
-
-
-
-
-
-
-
-
-"""
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  passwd="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-mycursor.execute("CREATE TABLE customers (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))")
-
-"""

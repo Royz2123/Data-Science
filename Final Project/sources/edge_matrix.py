@@ -4,32 +4,19 @@ import time
 import shelve
 import os
 import numpy as np
-import sql_map
 
+from rank_vector import Vector
 from constants import *
 
 
+
 class EdgeMatrix(object):
-    BASE_FOLDER = "databases/"
-    OFFSETS_FILENAME = "Offset_Vector"
-    EDGES_FILENAME = "Edges_Vector"
-    OFFSETS_PATH = BASE_FOLDER + OFFSETS_FILENAME
-    EDGES_PATH = BASE_FOLDER + EDGES_FILENAME
+    def __init__(self):
+        self._offset_vec = np.memmap("databases/Offset_Vector", dtype="float64", mode="r+", shape=(10**8 * 4))
+        self._edges_vec = np.memmap("databases/Edges_Vector", dtype="float64", mode="r+", shape=(10**9 * 5))
+        self.init_vectors()
 
-    def __init__(self, create_new=False):
-        if create_new or EdgeMatrix.OFFSETS_FILENAME not in os.listdir(EdgeMatrix.BASE_FOLDER):
-            open("databases/Offset_Vector", 'w+').close()
-            open("databases/Edges_Vector", 'w+').close()
-
-            self._offset_vec = np.memmap(EdgeMatrix.OFFSETS_PATH, dtype="int64", mode="r+", shape=(10**8 * 4))
-            self._edges_vec = np.memmap(EdgeMatrix.EDGES_PATH, dtype="int64", mode="r+", shape=(10**8 * 5))
-
-            self.init_vectors()
-        else:
-            self._offset_vec = np.memmap(EdgeMatrix.OFFSETS_PATH, dtype="int64", mode="r+", shape=(10 ** 8 * 4))
-            self._edges_vec = np.memmap(EdgeMatrix.EDGES_PATH, dtype="int64", mode="r+", shape=(10 ** 8 * 5))
-
-    def __getitem__(self, index):
+    def get_cited(self, index):
         start_offset = self._offset_vec[index]
         next_offset = self._offset_vec[index + 1]
         return [self._edges_vec[offset] for offset in range(start_offset, next_offset)]
@@ -49,6 +36,7 @@ class EdgeMatrix(object):
                 for line in f:
                     data = json.loads(line)
                     self._offset_vec[edge_index] = offset_index
+
 
                     for citation in data["inCitations"]:
                         cur.execute(
@@ -73,3 +61,5 @@ class EdgeMatrix(object):
         self._edges_vec.flush()
         self._offset_vec.flush()
 
+edges = EdgeMatrix()
+edges.get_cited(10)
