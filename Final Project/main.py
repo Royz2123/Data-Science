@@ -12,6 +12,7 @@ import os
 RECORDS = int(10 ** 7 * 3.918)
 DEBUG_MODE = False
 
+
 def get_url_from_index(index):
     pathname = RAW_DATA_PATH + str(index // 1000000)
     with open(pathname, 'rb') as f:
@@ -19,15 +20,15 @@ def get_url_from_index(index):
         for line in f:
             data = json.loads(line)
             if index == 0:
-                return (len(data["inCitations"]), data["s2Url"])
+                return len(data["inCitations"]), data["s2Url"]
             index -= 1
 
 
 def dist(vec1, vec2):
-    dist = 0
+    dist_val = 0
     for i in range(RECORDS):
-        dist += abs(vec1[i] - vec2[i])
-    return dist
+        dist_val += abs(vec1[i] - vec2[i])
+    return dist_val
 
 
 def researcher_ranking(name):
@@ -70,8 +71,8 @@ def max_rank_paper():
     print(get_url_from_index(max_index))
 
 
-
 def rank_vector():
+    print("Creating Rank Vector\n")
     start_time = time.time()
     edges = EdgeMatrix()
 
