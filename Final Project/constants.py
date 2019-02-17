@@ -10,6 +10,8 @@ ID_TO_INDEX_PATH = r'.\databases\idToIndex.db'
 EDGES_VECTOR_PATH = r'.\databases\edges.db'
 RANK_VEC_1_PATH = r'.\databases\rank1.db'
 RANK_VEC_2_PATH = r'.\databases\rank2.db'
+STEM_TXT_VEC = r'.\databases\stemText.db'
+BEST_TEXT_DATA_VEC = r'.\databases\best_text_data_vector.db'
 
 TEST_ID = "01276e6f0d18c35d5405b100f3028700a9363327"
 

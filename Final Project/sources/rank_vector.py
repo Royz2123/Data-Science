@@ -42,7 +42,8 @@ class Vector():
                 VALUES (?, ?);
                 """.format(self._name.replace('"', '""')), (index, edges)
             )
-        except:
+        except Exception as e:
+            print(e)
             print("Update Failed")
 
     def __getitem__(self, index):

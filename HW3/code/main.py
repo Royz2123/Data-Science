@@ -3,7 +3,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk import PorterStemmer
 from nltk import pos_tag
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 nltk.download('averaged_perceptron_tagger')
 
