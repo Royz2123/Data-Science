@@ -117,7 +117,7 @@ for i in abstracts:
     allwords_tokenized = tokenize_only(i)
     totalvocab_tokenized.extend(allwords_tokenized)
 
-vocab_frame = pd.DataFrame({'words': totalvocab_tokenized}, index = totalvocab_stemmed)
+vocab_frame = pd.DataFrame({'words': totalvocab_tokenized}, index=totalvocab_stemmed)
 
 
 

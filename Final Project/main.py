@@ -1,6 +1,7 @@
 import parser
 from edge_matrix import EdgeMatrix
 from constants import *
+import util
 
 import numpy as np
 import time
@@ -11,24 +12,6 @@ import os
 #edges = EdgeMatrix(True)
 RECORDS = int(10 ** 7 * 3.918)
 DEBUG_MODE = False
-
-
-def get_url_from_index(index):
-    pathname = RAW_DATA_PATH + str(index // 1000000)
-    with open(pathname, 'rb') as f:
-        index = index % 1000000
-        for line in f:
-            data = json.loads(line)
-            if index == 0:
-                return len(data["inCitations"]), data["s2Url"]
-            index -= 1
-
-
-def dist(vec1, vec2):
-    dist_val = 0
-    for i in range(RECORDS):
-        dist_val += abs(vec1[i] - vec2[i])
-    return dist_val
 
 
 def researcher_ranking(name):
@@ -54,7 +37,7 @@ def researcher_ranking(name):
 
 
 def max_rank_paper():
-    curr_vector = np.memmap("databases/RankVector0.01", dtype="float64", mode="r+", shape=(10**7 * 4))
+    curr_vector = np.memmap("databases/RankVector06", dtype="float64", mode="r+", shape=(10**7 * 4))
 
     max_index = 0
     max_value = 0
@@ -64,11 +47,11 @@ def max_rank_paper():
             max_index = i
             max_value = curr_val
 
-        if not i % 100000:
+        if not i % 1000000:
             print(i)
 
     print(curr_vector[max_index])
-    print(get_url_from_index(max_index))
+    print(util.get_url_from_index(max_index))
 
 
 def rank_vector():
@@ -115,7 +98,7 @@ def rank_vector():
                 print("Max Paper until now: ", max_paper)
 
         # check convergence
-        distance = dist(curr_vector, prev_vector)
+        distance = util.dist(curr_vector, prev_vector)
         print("Iteration no. ", iteration, "\tConvergence distance: ", distance, "\tTarget Distance: ", EPSILON)
         if distance < EPSILON:
             break
@@ -126,7 +109,7 @@ def rank_vector():
         prev_vector = temp_vector
 
 
-rank_vector()
+max_rank_paper()
 
 """
 def test():
