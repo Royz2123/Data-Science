@@ -63,14 +63,15 @@ def results_list(query, results):
     for i, result in enumerate(results):
         data = util.get_paper_from_index(result[0])
         print(
-            "%d. %s (Match Score: %.10f)(%d):\n\t\tAuthors: %s\n\t\tAbstract:\t%s%s\n" % (
+            "%d. %s (Match Score: %.5f)(%d):\n\t\tAuthors: %s\n\t\tAbstract:\t%s%s\n\t\tLink:\t%s\n" % (
                 i+1,
                 data["title"],
                 result[1],
                 result[0],
                 ", ".join([author["name"] for author in data["authors"]]),
                 data["paperAbstract"][:150],
-                "..." * (len(data["paperAbstract"]) > 150)
+                "..." * (len(data["paperAbstract"]) > 150),
+                data["s2Url"]
             )
         )
 
