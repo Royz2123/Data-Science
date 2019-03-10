@@ -1,8 +1,26 @@
 import json
 from constants import *
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 DEFAULT_LINKS_FILE = "paper_links.txt"
 DEFAULT_OUTPUT_FILE = "json_data.json"
+
+
+def plot_paper_ranks(papers, ticks=False):
+    x = np.array(range(len(papers)))
+    if ticks:
+        y = np.array([paper[1] for paper in papers])
+        my_xticks = [paper[0] for paper in papers]
+        plt.xticks(x, my_xticks, rotation='vertical')
+    else:
+        y = papers
+        plt.xlabel("Paper Indices")
+    plt.plot(x, y)
+    plt.title("Top " + str(len(papers)) + " papers, plotted against their rank")
+    plt.ylabel("Rank")
+    plt.show()
 
 
 def write_list(lst, filename=DEFAULT_LINKS_FILE):

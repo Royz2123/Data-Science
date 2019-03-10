@@ -34,7 +34,7 @@ def prep_strings(txt):
 
 
 def score_rank_merge(score, ranking):
-    return score * np.log((10**9 * ranking))
+    return score * np.log(1 + np.log((10**9 * ranking)))
 
 
 def calc_score(keywords, data, ranking):

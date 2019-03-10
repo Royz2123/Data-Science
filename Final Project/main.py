@@ -54,6 +54,29 @@ def max_rank_paper():
     print(util.get_url_from_index(max_index))
 
 
+def top_rank_papers(num_papers=1000, ticks=False):
+    curr_vector = np.memmap("databases/RankVector06", dtype="float64", mode="r+", shape=(10**7 * 4))
+
+    # get top "num_papers" papers
+    lst = []
+    for i in range(RECORDS):
+        lst.append((i, curr_vector[i]))
+        if not i % 100000:
+            print(i)
+            lst = sorted(lst, key=lambda x: x[1], reverse=True)[:num_papers]
+    lst = sorted(lst, key=lambda x: x[1], reverse=True)[:num_papers]
+
+    # get titles if necessary
+    if ticks:
+        lst = [(util.get_paper_from_index(index)["title"], val) for index, val in lst]
+    else:
+        lst = [val for index, val in lst]
+
+    # visualize
+    print(lst)
+    util.plot_paper_ranks(lst, ticks)
+
+
 def rank_vector():
     print("Creating Rank Vector\n")
     start_time = time.time()
@@ -109,7 +132,8 @@ def rank_vector():
         prev_vector = temp_vector
 
 
-max_rank_paper()
+top_rank_papers()
+# max_rank_paper()
 
 """
 def test():
