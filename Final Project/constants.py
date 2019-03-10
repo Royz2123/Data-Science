@@ -1,6 +1,8 @@
 HASH_TO_INDEX_PATH = "databases/hash_to_index.db"
 INDEX_TO_HASH_PATH = "databases/index_to_hash.db"
 
+RESEARCHERS_PATH = "databases/researchers.db"
+
 OUT_CITATIONS_PATH = "databases/out_citations"
 
 ADJACENCY_PATH = "databases/adjacency"

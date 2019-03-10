@@ -41,7 +41,8 @@ class SqlMap(object):
     def __setitem__(self, index, edges):
         try:
             self._conn.execute(INSERT.format(self._name.replace('"', '""')), (index, edges))
-        except:
+        except Exception as e:
+            print(e)
             print("Update Failed")
 
     def __getitem__(self, index):
@@ -49,7 +50,6 @@ class SqlMap(object):
         try:
             return self._cur.fetchall()[0][1]
         except Exception as e:
-            print(e)
             return None
 
     def save(self):
