@@ -13,11 +13,16 @@ EDGES_VECTOR_PATH = r'.\databases\edges.db'
 RANK_VEC_1_PATH = r'.\databases\rank1.db'
 RANK_VEC_2_PATH = r'.\databases\rank2.db'
 STEM_TXT_VEC = r'.\databases\stemText.db'
-BEST_TEXT_DATA_VEC = r'.\databases\best_text_data_vector.db'
-BEST_INDEXES_VEC = r'.\databases\1000BestVector'
-FINAL_RANK_VEC = r'.\databases\RankVectorFinal'
+FINAL_RANK_VEC = r'.\databases\RankVector06'
 
 TEXT_DATA_VECTOR = "text_data_vector"
+
+# Top K articles
+BEST_TEXTS = r'.\databases\clustering\best_texts'
+BEST_INDEXES = r'.\databases\clustering\best_indexes'
+BEST_ARTICLE_NUM = 100000
+BEST_TEXT_DATA_VEC = BEST_TEXTS + str(BEST_ARTICLE_NUM)
+BEST_INDEXES_VEC = BEST_INDEXES + str(BEST_ARTICLE_NUM)
 
 TEST_ID = "01276e6f0d18c35d5405b100f3028700a9363327"
 
@@ -25,7 +30,6 @@ LAMBDA = 0.15
 EPSILON = 0.000001
 MAX_ITERATIONS = 20
 RECORDS = int(10 ** 7 * 3.918)
-BEST_ARTICLE_NUM = 1000
 
 '''
 wtf we had two constant files 
