@@ -17,7 +17,7 @@ CREATE_TABLE = '''
     num TEXT NOT NULL);
 '''
 INSERT = """
-    INSERT INTO "{}" (ID, num) 
+    INSERT OR IGNORE INTO "{}" (ID, num) 
     VALUES (?, ?);
 """
 SELECT = """

@@ -34,7 +34,8 @@ def prep_strings(txt):
 
 
 def score_rank_merge(score, ranking):
-    return score * np.log(1 + np.log((10**9 * ranking)))
+    alpha = 0.9
+    return score * ((1 - alpha) + alpha * np.log(1 + ranking / 10**-5))
 
 
 def calc_score(keywords, data, ranking):
@@ -98,4 +99,4 @@ def article_search(query):
                     results_list(query, top_results)
 
 
-article_search("Big Data")
+#article_search("Big Data")

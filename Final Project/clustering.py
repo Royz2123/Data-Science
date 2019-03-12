@@ -233,5 +233,5 @@ def classifyPaper(abstract):
     getWordCloudForCentroid(km, i, terms, vocab_frame)
 
 
-if __name__ == '__main__':
-    cluster_best_articles("KMeans", 20)
+#if __name__ == '__main__':
+#    cluster_best_articles("KMeans", 20)

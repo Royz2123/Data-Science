@@ -2,6 +2,7 @@ HASH_TO_INDEX_PATH = "databases/hash_to_index.db"
 INDEX_TO_HASH_PATH = "databases/index_to_hash.db"
 
 RESEARCHERS_PATH = "databases/researchers.db"
+RESEARCHER_IDS_VEC = "databases/researchers_ids"
 
 OUT_CITATIONS_PATH = "databases/out_citations"
 
@@ -25,6 +26,7 @@ BEST_TEXT_DATA_VEC = BEST_TEXTS + str(BEST_ARTICLE_NUM)
 BEST_INDEXES_VEC = BEST_INDEXES + str(BEST_ARTICLE_NUM)
 
 TEST_ID = "01276e6f0d18c35d5405b100f3028700a9363327"
+RESEARCHER_TEST_ID = 2506899
 
 LAMBDA = 0.15
 EPSILON = 0.000001
