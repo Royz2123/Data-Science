@@ -20,7 +20,7 @@ TEXT_DATA_VECTOR = "text_data_vector"
 # Top K articles
 BEST_TEXTS = r'.\databases\clustering\best_texts'
 BEST_INDEXES = r'.\databases\clustering\best_indexes'
-BEST_ARTICLE_NUM = 100000
+BEST_ARTICLE_NUM = 1000
 BEST_TEXT_DATA_VEC = BEST_TEXTS + str(BEST_ARTICLE_NUM)
 BEST_INDEXES_VEC = BEST_INDEXES + str(BEST_ARTICLE_NUM)
 

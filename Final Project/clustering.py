@@ -75,7 +75,7 @@ def cluster_best_articles(type="KMeans", clusterNum=5):
     vocab_frame = pd.DataFrame({'words': totalvocab_tokenized}, index=totalvocab_stemmed)
 
     print("starting clustering...")
-    tfidf_vectorizer = TfidfVectorizer(max_df=0.7, max_features=200000, # tune able hyper parameters
+    tfidf_vectorizer = TfidfVectorizer(max_df=0.3, max_features=200000, # tune able hyper parameters
                                        stop_words='english',
                                        use_idf=True, tokenizer=tokenize_and_stem, ngram_range=(1, 3))
 
@@ -129,7 +129,12 @@ def cluster_best_articles(type="KMeans", clusterNum=5):
 
         # Save Clusters
         clustering_title = str(clusterNum) + "_Cluster" + str(BEST_ARTICLE_NUM) + "_Articles"
-        os.mkdir("./clusters/" + clustering_title)
+
+        try:
+            os.mkdir("./clusters/" + clustering_title)
+        except:
+            pass
+
         for i in range(clusterNum):
             getWordCloudForCentroid(
                 km,
@@ -155,7 +160,6 @@ def getWordCloudForCentroid(km, i, terms, vocab_frame, clustering_title="New_Clu
     freq = {}
     for (i, f) in a:
         i = int(i)
-        print(i)
         shingle = ""
         for w in terms[i].split(' '):
             # shingle += vocab_frame.loc[w].values.tolist()[0][0] + " "
@@ -190,7 +194,7 @@ def classifyPaper(abstract):
     vocab_frame = pd.DataFrame({'words': totalvocab_tokenized}, index=totalvocab_stemmed)
 
     print("starting clustering...")
-    tfidf_vectorizer = TfidfVectorizer(max_df=0.7, max_features=200000, # tune able hyper parameters
+    tfidf_vectorizer = TfidfVectorizer(max_df=0.3, max_features=200000, # tune able hyper parameters
                                        stop_words='english',
                                        use_idf=True, tokenizer=tokenize_and_stem, ngram_range=(1, 3))
 
@@ -230,4 +234,4 @@ def classifyPaper(abstract):
 
 
 if __name__ == '__main__':
-    cluster_best_articles("KMeans", 5)
+    cluster_best_articles("KMeans", 20)
