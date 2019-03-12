@@ -61,6 +61,7 @@ def tokenize_only(text):
 
 
 def cluster_best_articles(type="KMeans", clusterNum=5):
+    print(clusterNum)
     indexes, titles, abstracts = getGoodData()
 
     totalvocab_stemmed = []

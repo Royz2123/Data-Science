@@ -1,4 +1,4 @@
-from sources.rank_vector import Vector
+import rank_vector
 import numpy as np
 import json
 import heapq
@@ -80,7 +80,7 @@ def createBestTextDataDatabse(indexes):
 
 def getTextDatasFromBestTxtVec():
     print("getting saved text data...")
-    vec = Vector(TEXT_DATA_VECTOR, 1, BEST_TEXT_DATA_VEC)
+    vec = rank_vector.Vector(TEXT_DATA_VECTOR, 1, BEST_TEXT_DATA_VEC)
     if vec is None:
         return []
     l = []
