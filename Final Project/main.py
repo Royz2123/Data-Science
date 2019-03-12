@@ -25,7 +25,7 @@ def main():
             query = input("Enter Query:\n")
             article_search.article_search(query)
         elif option == 2:
-            method = input("Enter Method:\n")
+            method = input("Enter Method (KMeans or hierarichal):\n")
             clusters = int(input("Enter number of clusters:\n"))
             clustering.cluster_best_articles(method, clusters)
             print("Your word clouds are under the clusters directory!")

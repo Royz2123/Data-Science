@@ -92,16 +92,6 @@ def getTextDatasFromBestTxtVec():
     return l
 
 
-# def getTextDataFromPaper(index):
-#     pathname = RAW_DATA_PATH + str(index // 1000000)
-#     with open(pathname, 'rb') as f:
-#         index = index % 1000000
-#         for line in f:
-#             data = json.loads(line)
-#             if index == 0:
-#                 return [data["title"], data["entities"], data["paperAbstract"]]
-#             index -= 1
-
 def getBestArticlesIndexes():
     print("getting best articles indexes...")
     indexes = []

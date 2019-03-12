@@ -1,4 +1,8 @@
+from scipy.cluster.hierarchy import ward, dendrogram, fcluster
 from sklearn.externals import joblib
+from sklearn.metrics.pairwise import cosine_similarity
+
+
 from wordcloud import WordCloud
 
 from top_rank_articles import getGoodData
@@ -36,6 +40,76 @@ def isGoodWord(token):
         and '\'' not in token
     )
 
+
+def hierarichal_cluster(abstracts, tfidf_vectorizer, terms, vocab_frame):
+    print("starting hierarchical clustering...")
+    tfidf_matrix = tfidf_vectorizer.fit_transform(abstracts)
+    dist = 1 - cosine_similarity(tfidf_matrix)
+    linkage_matrix = ward(dist)
+
+    plt.figure(figsize=(20, 10))
+    plt.title("Dendogram")
+    dendrogram(linkage_matrix,
+               p=50,
+               truncate_mode='lastp',
+               show_leaf_counts=True,
+               show_contracted=True,
+               )
+
+    plt.ylabel("")
+    plt.yticks([])
+    frame1 = plt.gca()
+    frame1.axes.yaxis.set_ticklabels([])
+
+    plt.tight_layout()
+    plt.show()
+
+    # num_clusters = 2
+    num_clusters = int(input("Enter number of clusters:"))
+    T = fcluster(linkage_matrix, num_clusters, criterion="maxclust")
+    clusters = [[j for j, val in enumerate(T) if val == i] for i in range(1, num_clusters + 1)]
+    print("Clusters are:")
+    for i,c in enumerate(clusters):
+        print("cluster " + str(i+1) + " size: " + str(len(c)))
+
+    while(True):
+        cmnd = input("Menu:\n"
+                     "show i - show wordCloud for cluster i\n"
+                     "save name i - save wordCloud for cluster i for name name\n"
+                     "select i - split cluster i to two smaller clusters\n\n")
+        i = int(cmnd.split(' ')[-1]) - 1
+        if "select" in cmnd:
+            hierarichal_cluster([abstracts[k] for k in clusters[i]], tfidf_vectorizer
+                                ,terms, vocab_frame)
+        else:
+            codebook = []
+            for j in range(T.min(), T.max() + 1):
+                codebook.append(tfidf_matrix[T == j].mean(0))
+            centroids = pd.DataFrame(np.vstack(codebook))
+            print("getting wordcloud for cluster " + str(i+1))
+            a = tuple(tuple(centroids.loc[i, :].reset_index().values))
+            unstemmer = vocab_frame.to_dict('dict')['words']
+            freq = {}
+            for (j, f) in a:
+                j = int(j)
+                shingle = ""
+                for w in terms[j].split(' '):
+                    if (w in unstemmer):
+                        shingle += unstemmer[w] + " "
+                if not np.isnan(f) and not f == 0:
+                    freq[shingle] = f
+
+            wordcloud = WordCloud(width=800, height=400, background_color='white')
+            kMeansWordCloud = wordcloud.generate_from_frequencies(freq)
+            plt.figure(figsize=(20, 10))
+            title = "cluster " + str(i + 1) + " size: " + str(len(clusters[i]))
+            plt.title(title, fontdict={'fontsize': 32, 'fontweight': 'medium'})
+            plt.imshow(kMeansWordCloud)
+            plt.axis("off")
+            if "save" in cmnd:
+                plt.savefig("./results/" + cmnd.split(' ')[1])
+            else:
+                plt.show()
 
 def tokenize_and_stem(text):
     # first tokenize by sentence, then by word to ensure that punctuation is caught as it's own token
@@ -144,6 +218,9 @@ def cluster_best_articles(type="KMeans", clusterNum=5):
                 vocab_frame,
                 clustering_title
             )
+
+    elif type == "hierarichal":
+        hierarichal_cluster(abstracts, tfidf_vectorizer, terms, vocab_frame)
     else:
         print("Clustering type not supported yet")
 
